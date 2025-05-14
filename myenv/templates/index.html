@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Classifier and Dataset Selection</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+      }
+      .container {
+        width: 50%;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        text-align: center;
+        color: #333;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+      label,
+      select,
+      button {
+        font-size: 16px;
+      }
+      select,
+      button {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      button {
+        background-color: #4caf50;
+        color: white;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      button:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+  <body background="bg.jpg">
+    <div class="container">
+      <h1>Select Classifier and Dataset</h1>
+      <form action="/validate" method="post">
+        <label for="classifier">Select Classifier:</label>
+        <select name="classifier" id="classifier">
+          <option value="Use Multiple Classifiers">
+            Use Multiple Classifiers
+          </option>
+          {% for classifier in classifiers %}
+          <option value="{{ classifier }}">{{ classifier }}</option>
+          {% endfor %}
+        </select>
+        <label for="dataset">Select Dataset:</label>
+        <select name="dataset" id="dataset">
+          {% for dataset in datasets %}
+          <option value="{{ dataset }}">{{ dataset }}</option>
+          {% endfor %}
+        </select>
+        <button type="submit">Next</button>
+      </form>
+    </div>
+  </body>
+</html>
